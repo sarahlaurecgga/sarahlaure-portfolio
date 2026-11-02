@@ -791,3 +791,22 @@ console.log('%c SL. %c Hi, curious one. This site is hand-built HTML, CSS and JS
 ;/* ---- block 37 ---- */
 (function(){const G='!<>-_\\/[]{}=+*^?#$%&01';const run=h=>{if(h._b)return;h._b=1;const fin=h.dataset.fin||(h.dataset.fin=h.textContent);let i=0;const t=setInterval(()=>{i++;h.textContent=fin.slice(0,i)+fin.slice(i,i+5).split('').map(()=>G[Math.random()*G.length|0]).join('');if(i>=fin.length){clearInterval(t);h.textContent=fin;h._b=0}},75)};const go=()=>setTimeout(()=>{document.querySelectorAll('#pile .slot.top .sheet h3, #pile .slot.top h3').forEach(run)},60);document.querySelectorAll('.pilenav button,.pilenav2 button').forEach(b=>b.addEventListener('click',go))})();
 ;
+;/* ---- pollen: fine particles drifting in the background ---- */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const c=document.createElement('canvas');c.id='pollen';c.setAttribute('aria-hidden','true');
+  c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:3';
+  document.body.appendChild(c);
+  const x=c.getContext('2d');let W,H,D=Math.min(2,devicePixelRatio||1),P=[];
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+  function size(){W=innerWidth;H=innerHeight;c.width=W*D;c.height=H*D;x.setTransform(D,0,0,D,0,0);
+    const n=W<700?28:60;P=Array.from({length:n},()=>({x:rnd(0,W),y:rnd(0,H),r:rnd(.4,1.4),vx:rnd(-.12,.12),vy:rnd(-.22,-.04),ph:rnd(0,6.28),a:rnd(.25,.7),h:Math.random()<.7?'210,215,255':'255,225,160'}))}
+  size();addEventListener('resize',size);
+  let t=0;
+  (function f(){requestAnimationFrame(f);if(document.hidden)return;t+=.016;x.clearRect(0,0,W,H);
+    for(const p of P){p.x+=p.vx+Math.sin(t*.6+p.ph)*.18;p.y+=p.vy;
+      if(p.y<-5){p.y=H+5;p.x=rnd(0,W)}if(p.x<-5)p.x=W+5;if(p.x>W+5)p.x=-5;
+      const tw=.6+.4*Math.sin(t*1.5+p.ph);
+      x.beginPath();x.arc(p.x,p.y,p.r,0,6.283);x.fillStyle=`rgba(${p.h},${p.a*tw})`;x.shadowColor=`rgba(${p.h},.8)`;x.shadowBlur=4;x.fill()}
+  })();
+})();
