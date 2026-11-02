@@ -357,7 +357,8 @@ g.innerHTML=d})();
     if(o.depth<1){const s0=stem[0];blooms.push({y:top,base:[s0[0],s0[1]+1,s0[2]],tip:s0,dir:[0,1,-.2],size:rnd(90,150)*o.scale,bud:false,F:(()=>{const F=mk(['lily','spider','cup'][Math.floor(Math.random()*3)]);F.hue=Math.random();return F})(),spin:rnd(0,6),top:true})}
     return {...o,stem,tube,leaves,blooms,len};
   }
-  function build(){
+  function build(){const _R=Math.random;let _s=20251;Math.random=()=>{_s=(_s*16807)%2147483647;return (_s-1)/2147483646};try{return _build()}finally{Math.random=_R}}
+  function _build(){
     DOC=document.documentElement.scrollHeight;
     const nr=nameEl.getBoundingClientRect();const top=nr.top+scrollY+nr.height*.45;
     const cx=W<760?W*.74:Math.min(nr.right+Math.min(W,H)*.2,W*.8);
@@ -796,8 +797,8 @@ console.log('%c SL. %c Hi, curious one. This site is hand-built HTML, CSS and JS
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const c=document.createElement('canvas');c.id='pollen';c.setAttribute('aria-hidden','true');
-  c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:3';
-  document.body.appendChild(c);
+  c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1';
+  const fl=document.getElementById('flora');fl&&fl.parentNode?fl.parentNode.insertBefore(c,fl.nextSibling):document.body.prepend(c);
   const x=c.getContext('2d');let W,H,D=Math.min(2,devicePixelRatio||1),P=[],S=[],O=[];
   const rnd=(a,b)=>a+Math.random()*(b-a);
   const COL=['200,210,255','180,240,255','255,225,170','220,190,255'];
