@@ -1995,3 +1995,4 @@ h1,h2,h3,.hero h1,.hero h1 .ch,.contact a.mail,.sechead h2{font-weight:400!impor
 .pile .slot:not(.top){opacity:0!important;pointer-events:none}
 .leaving{border:0!important;background:none!important;padding:0!important}
 .pile .slot:not(.top){position:absolute!important;top:0;left:0;right:0;max-height:100%;overflow:hidden}.pile{padding-bottom:0!important}
+.sldx{color:#1B1A16!important;top:12px!important;right:12px!important;box-shadow:0 2px 10px rgba(0,0,0,.35)}.sldlg{position:fixed}
