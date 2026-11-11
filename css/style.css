@@ -1988,3 +1988,10 @@ h1,h2,h3,.hero h1,.hero h1 .ch,.contact a.mail,.sechead h2{font-weight:400!impor
 .slpages{max-height:92vh;overflow:auto;display:flex;flex-direction:column;gap:12px}
 .slpages img{width:100%;display:block}
 .sldx{position:absolute;top:-14px;right:-14px;z-index:2;width:36px;height:36px;border-radius:50%!important;border:1px solid #1B1A16;background:#FFF9E8;font-size:1.2rem;cursor:pointer}
+.sidecol{display:flex;flex-direction:column;gap:16px;min-width:0}
+.sidecol .labwrap{max-height:300px;overflow:hidden}
+.sidecol .lab{max-height:300px;object-fit:cover;width:100%}
+.sidecol .sldocs{margin-top:0;padding:0 14px 14px}
+.pile .slot:not(.top){opacity:0!important;pointer-events:none}
+.leaving{border:0!important;background:none!important;padding:0!important}
+.pile .slot:not(.top){position:absolute!important;top:0;left:0;right:0;max-height:100%;overflow:hidden}.pile{padding-bottom:0!important}
